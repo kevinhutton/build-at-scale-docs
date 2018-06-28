@@ -1,9 +1,3 @@
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   
-   
-   
 
 
 .. _installing_kubernetes:

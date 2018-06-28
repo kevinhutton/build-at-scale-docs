@@ -1,12 +1,3 @@
-
-
-.. toctree::
-   :maxdepth: 3
-   
-   prerequisites
-   kubernetes-install
-   kismatic-sample-yaml
-   uninstall
    
 Sample Helm Chart Parameters  
 ==========================================

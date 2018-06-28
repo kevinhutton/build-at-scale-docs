@@ -6,7 +6,7 @@
 Welcome to Build-At-Scale's documentation
 ==========================================
 
-Build-At-Scale is an end-to-end CI-CD framework from creating code repository to deploying builds. All these processes run as kubernetes pods and use persistent NetApp storage with NetApp Service Level Manager.
+Build-At-Scale is an end-to-end CI-CD framework from creating code repository to deploying builds. All these processes run as Kubernetes pods and use persistent NetApp storage with NetApp Service Level Manager.
 
 The advantage of running CI process on NetApp for Business or Asset owner are –
 
@@ -31,6 +31,9 @@ NetApp data volumes also known as FlexVols, Snapshots and FlexClones are thin pr
 Data Compaction and De-duplication for the source code repositories and the software builds during the CI process on NetApp provides a high degree of storage space efficiency. Data compression of build artifacts in the binary repository lso provides space savings.
 
 
+
+Contents
+=======================================================
 .. toctree::
    :maxdepth: 3
    

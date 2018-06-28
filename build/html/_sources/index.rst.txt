@@ -31,6 +31,9 @@ NetApp data volumes also known as FlexVols, Snapshots and FlexClones are thin pr
 Data Compaction and De-duplication for the source code repositories and the software builds during the CI process on NetApp provides a high degree of storage space efficiency. Data compression of build artifacts in the binary repository lso provides space savings.
 
 
+
+Contents
+=======================================================
 .. toctree::
    :maxdepth: 3
    
