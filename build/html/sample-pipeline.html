@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sample CI Pipeline by Build-At-Scale &mdash; Build-At-Scale 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uninstalling Build-At-Scale" href="uninstall.html" />
+    <link rel="prev" title="Sample Kismatic YAML file!" href="kismatic-sample-yaml.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Build-At-Scale
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Pre-Requisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing Kubernetes using Kismatic Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html#installing-build-at-scale">Installing Build-at-Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kismatic-sample-yaml.html">Sample Kismatic YAML file!</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sample CI Pipeline by Build-At-Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Build-At-Scale</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Sample CI Pipeline by Build-At-Scale</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sample-pipeline.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sample-ci-pipeline-by-build-at-scale">
+<h1>Sample CI Pipeline by Build-At-Scale<a class="headerlink" href="#sample-ci-pipeline-by-build-at-scale" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span>def generateTimeStamp() {
+def now = new Date()
+      return now.format(&quot;yyyyMMddmmss&quot;, TimeZone.getTimeZone(&#39;UTC&#39;))
+ }
+
+def replaceDashesAndPeriods(oldString) {
+      def newString = oldString
+      newString = newString.replaceAll(&#39;[.|-]&#39;,&#39;_&#39;)
+      return newString
+}
+
+// Global Variables
+
+def jobName = &quot;${JOB_NAME}&quot;
+def jobNameNoUnderScores = jobName.replaceAll(&#39;_&#39;,&#39;-&#39;)
+def pvcName =  &quot;${jobNameNoUnderScores}-pvc&quot;
+def volumeMountPath = &#39;/mnt/&#39; + params.BUILDVOL
+def podName =  &quot;${jobNameNoUnderScores}-${BUILD_NUMBER}-pod&quot;
+def podLabel = &quot;${jobNameNoUnderScores}-${BUILD_NUMBER}-pod&quot;
+def gitDir = volumeMountPath + &#39;/git&#39;
+def buildDir = gitDir
+def sourceCodeURL = params.SOURCE_CODE_URL
+def sourceCodeBranch = params.SOURCE_CODE_BRANCH
+def gitVolume = params.GIT_VOLUME
+def broker_url = params.BROKER_URL
+def scmSnapshotName = &quot;&quot;
+def ciSnapshotName = &quot;&quot;
+def currentGitRevision = &quot;&quot;
+def build_status = &quot;passed&quot;
+
+echo &quot;Running CI Pipeline&quot;
+echo &quot;Note: This Pipeline expects that a pvc with name ${pvcName} is available prior to running&quot;
+
+// Define Kubernetes Pod that we will use for this job and mount Ontap Volume on this POD
+// We need to mount /var/run/docker.sock for DIND builds (Docker in Docker)
+podTemplate(name: podName , label: podLabel,
+volumes: [hostPathVolume(hostPath: &#39;/var/run/docker.sock&#39;, mountPath: &#39;/var/run/docker.sock&#39;),
+                      persistentVolumeClaim(claimName: pvcName, mountPath: volumeMountPath, readOnly: false)],
+containers: [
+        containerTemplate(
+                name: &#39;jnlp&#39;,
+                workingDir: &#39;/home/jenkins_slave_workspace&#39;,
+                image: &quot;${params.JENKINS_SLAVE_IMAGE}&quot;,
+                args: &#39;${computer.jnlpmac} ${computer.name}&#39;,
+                alwaysPullImage: true,
+        ), ]
+
+)
+{
+      node(&#39;master&#39;)
+      {
+                stage(&#39;Create SCM snapshot&#39;)
+                {
+                      def scmTrigger = currentBuild.rawBuild.getAction(hudson.plugins.git.RevisionParameterAction)
+                      if (scmTrigger) {
+                        currentGitRevision = scmTrigger.commit
+                        gitRevShorthand = currentGitRevision.take(7)
+                        scmSnapshotName = gitRevShorthand + &#39;_&#39; + generateTimeStamp()
+                        sh &quot;curl -X POST ${broker_url}/backend/snapshot/create -F volume_name=${params.GIT_VOLUME} -F jenkins_build=${BUILD_NUMBER} -F &#39;snapshot_name=${scmSnapshotName}&#39; -F &#39;type=scm&#39; &quot;
+                        echo &quot;SCM snapshot created: ${scmSnapshotName}&quot;
+                      }
+                      else {
+                        echo &quot;Build not triggered by scm hook , skipping SCM snapshot creation&quot;
+                      }
+                }
+      }
+
+// Run Main CI Process on Pod
+        node(podLabel)
+        {
+                stage(&#39;Setup&#39;) {
+                        sh &quot;mkdir -p ${gitDir}&quot;
+                        echo &#39;Check if netapp volume is correctly mounted&#39;
+                        if (! fileExists(gitDir)) {
+                                error &quot;could not find ${gitDir}, check ONTAP volume is mounted!&quot;
+                        }
+
+                }
+                stage(&#39;Checkout&#39;) {
+                        if (params.RUN_CLEAN_BUILD) {
+                                echo &quot;Running Clean Build&quot;
+                                sh &quot;sudo rm -rf ${volumeMountPath}/*&quot;
+                        }
+
+                        dir (gitDir) {
+                                 sh &#39;git config --global http.sslVerify false&#39;
+                                 checkout([$class: &#39;GitSCM&#39;,
+                                         branches: [[name: &quot;*/${sourceCodeBranch}&quot;]],
+                 doGenerateSubmoduleConfigurations: false,
+                 extensions: [[$class: &quot;LocalBranch&quot;, localBranch: &#39;**&#39;]],
+                 submoduleCfg: [],
+                 userRemoteConfigs: [[
+                      url: &quot;${sourceCodeURL}&quot;
+                 ]]])
+                                currentGitRevision = sh(returnStdout: true, script: &#39;git rev-parse HEAD&#39;).trim()
+                                if (currentBuild.description)
+                                        currentBuild.description  = currentBuild.description + &quot;\n&quot;
+                                else
+                                        currentBuild.description = &quot;&quot;
+                                currentBuild.description = currentBuild.description + &quot;Commit: &quot; + currentGitRevision.take(7)
+                        }
+                }
+                stage(&#39;Build&#39;) {
+                        try {
+                              sh &quot;mkdir -p ${buildDir} || true&quot;
+                              dir(buildDir) {
+                                      // Build commands should go here
+                                      echo &#39;running build&#39;
+                              }
+                        }
+                        catch(Exception e) {
+                              build_status = &#39;failed&#39;
+                              println(&quot;Build Error: ${e.message}&quot;)
+                        }
+                        }
+
+                        stage(&#39;Deploy To Apprenda&#39;) {
+
+                               build job: &#39;Deploy_To_Apprenda&#39;, parameters: [[$class: &#39;LabelParameterValue&#39;, name: &#39;node&#39;, label: &quot;${podLabel}&quot;]]
+
+                         }
+
+               }
+
+
+
+
+        }
+
+
+
+
+// Create Snapshot and add to Snapshot List
+// This should all be done on master
+
+        node(&#39;master&#39;) {
+
+                stage(&#39;Create CI Snapshot&#39;) {
+                      gitRevShorthand = currentGitRevision.take(7)
+                      ciSnapshotName = gitRevShorthand + &#39;_&#39; + BUILD_NUMBER + &#39;_&#39; + generateTimeStamp()
+                      sh &quot;curl -X POST ${broker_url}/backend/snapshot/create -F volume_name=${params.BUILDVOL} -F jenkins_build=${BUILD_NUMBER} -F &#39;snapshot_name=${ciSnapshotName}&#39; -F &#39;build_status=${build_status}&#39; -F &#39;type=ci&#39;&quot;
+                      echo &quot;CI snapshot created: ${ciSnapshotName}&quot;
+                }
+                stage(&#39;Determine overall build status&#39;) {
+                      if (build_status == &#39;failed&#39;) {
+                              sh &quot;exit 1&quot;
+                      }
+                }
+        }
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uninstall.html" class="btn btn-neutral float-right" title="Uninstalling Build-At-Scale" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kismatic-sample-yaml.html" class="btn btn-neutral" title="Sample Kismatic YAML file!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, NetApp.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
