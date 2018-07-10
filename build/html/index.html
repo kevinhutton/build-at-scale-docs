@@ -83,7 +83,6 @@
 <li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing Kubernetes using Kismatic Tool</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html#installing-build-at-scale">Installing Build-at-Scale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kismatic-sample-yaml.html">Sample Kismatic YAML file!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sample-pipeline.html">Sample CI Pipeline by Build-At-Scale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample Helm Chart Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>
@@ -153,7 +152,7 @@
             
   <div class="section" id="welcome-to-build-at-scale-s-documentation">
 <h1>Welcome to Build-At-Scale’s documentation<a class="headerlink" href="#welcome-to-build-at-scale-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Build-At-Scale is an end-to-end CI-CD framework from creating code repository to deploying builds. All these processes run as kubernetes pods and use persistent NetApp storage with NetApp Service Level Manager.</p>
+<p>Build-At-Scale is an end-to-end CI-CD framework from creating code repository to deploying builds. All these processes run as Kubernetes pods and use persistent NetApp storage with NetApp Service Level Manager.</p>
 <p>The advantage of running CI process on NetApp for Business or Asset owner are –</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -167,8 +166,8 @@ Each user workspace is pre-packaged with the source code and the dependencies li
 <li><strong>Reduce build time</strong></li>
 </ol>
 </div></blockquote>
-<p>NetApp Snapshots for the CI data volumes allows developers to run incremental builds over full builds. Full builds are time consuming.
-Incremental builds allow developers to test the changes quickly in their workspaces and provides consistency to the builds with reduced build times.</p>
+<p>NetApp Snapshots and Flexclones for the CI data volumes allows developers to clone copies of the latest builds and merge the changes with their own incremental changes.
+Incremental builds allow developers to test and merge the changes quickly in their workspaces and provides consistency to the builds with reduced build times.</p>
 <blockquote>
 <div><ol class="arabic simple" start="3">
 <li><strong>Cloud-IDE integretion</strong></li>
@@ -199,7 +198,6 @@ Data Compaction and De-duplication for the source code repositories and the soft
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kismatic-sample-yaml.html">Sample Kismatic YAML file!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sample-pipeline.html">Sample CI Pipeline by Build-At-Scale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample Helm Chart Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>

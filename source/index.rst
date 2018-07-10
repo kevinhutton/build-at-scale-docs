@@ -17,8 +17,8 @@ Each user workspace is pre-packaged with the source code and the dependencies li
 
 	2. **Reduce build time**
 
-NetApp Snapshots for the CI data volumes allows developers to run incremental builds over full builds. Full builds are time consuming.
-Incremental builds allow developers to test the changes quickly in their workspaces and provides consistency to the builds with reduced build times.
+NetApp Snapshots and Flexclones for the CI data volumes allows developers to clone copies of the latest builds and merge the changes with their own incremental changes. 
+Incremental builds allow developers to test and merge the changes quickly in their workspaces and provides consistency to the builds with reduced build times.
 
 	3. **Cloud-IDE integretion**
 
@@ -40,7 +40,6 @@ Contents
    prerequisites
    kubernetes-install
    kismatic-sample-yaml
-   sample-pipeline
    helm-chart-values
    uninstall
    

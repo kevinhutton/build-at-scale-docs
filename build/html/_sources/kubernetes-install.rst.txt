@@ -70,7 +70,7 @@ Installation
 	
 	7. Install Kismatic as per `following documentation	 <https://github.com/apprenda/kismatic>`_.
 	
-		A sample installation yaml file is described `here <_kismatic-sample-yaml>`
+		A sample installation yaml file is described `here <kismatic-sample-yaml.html>`_.
 	
 	
 	8. Download and Install Helm Package Manager
@@ -234,9 +234,13 @@ Configuring Build-at-Scale
 		
 		.. figure:: images/couchdbconf.PNG
 			:width: 100%
-			:alt: Cloud9IDE	
-		.. note:: Build-at-Scale cannot be used without setting up CouchDB.
+			:alt: CouchDB configuration
+			
+		.. note:: 
 		
+				Build-at-Scale automatically configrues the iniital CouchDB tables just by visiting the above link.
+				
+				
 	2. **Configure GitLab:**
 	
 	
