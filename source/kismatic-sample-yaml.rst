@@ -133,10 +133,10 @@ Sample Kismatic YAML file!
 		  CA: ""
 
 		  # Leave blank for unauthenticated access.
-		  username: "devopsnetapponaws"
+		  username: ""
 
 		  # Leave blank for unauthenticated access.
-		  password: "Netapp1!"
+		  password: ""
 
 		# Add-ons are additional components that KET installs on the cluster.
 		add_ons:
