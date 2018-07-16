@@ -38,7 +38,7 @@ Installation
 		
 		 >ssh-keygen -t rsa
 		 
-	iv) Copy the generated key to other hosts using ssh-copyid
+	iv) Copy the generated key to other hosts using ssh-copy-id
 	
 	
 	.. code-block:: shell
