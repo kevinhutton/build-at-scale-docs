@@ -214,7 +214,7 @@ Sample Kismatic YAML file!
 		  # left blank.
 		  nodes:
 		  - host: "app-linux2.lab.com"
-			ip: "10.192.39.29"
+			ip: "10.10.10.10"
 			internalip: ""
 
 		# Master nodes are the ones that run the Kubernetes control plane components.
@@ -227,10 +227,10 @@ Sample Kismatic YAML file!
 
 		  # If you have set up load balancing for master nodes, enter the short name here.
 		  # Otherwise, use the IP address of a single master node.
-		  load_balanced_short_name: "10.192.39.29"
+		  load_balanced_short_name: "10.10.10.11"
 		  nodes:
 		  - host: "app-linux2.lab.com"
-			ip: "10.192.39.29"
+			ip: "10.10.10.12"
 			internalip: ""
 			labels: {}
 
@@ -239,12 +239,12 @@ Sample Kismatic YAML file!
 		  expected_count: 2
 		  nodes:
 		  - host: "app-linux1.lab.com"
-			ip: "10.192.39.27"
+			ip: "10.10.10.11"
 			internalip: ""
 			labels: {}
 
 		  - host: "app-linux3.lab.com"
-			ip: "10.192.39.30"
+			ip: "10.10.10.13"
 			internalip: ""
 			labels: {}
 
@@ -253,7 +253,7 @@ Sample Kismatic YAML file!
 		  expected_count: 1
 		  nodes:
 		  - host: "app-linux2.lab.com"
-			ip: "10.192.39.29"
+			ip: "10.10.10.12"
 			internalip: ""
 			labels: {}
 
