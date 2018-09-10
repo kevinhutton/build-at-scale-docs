@@ -302,7 +302,7 @@ Configuring Build-at-Scale
 			:width: 100%
 			:alt: TheiaIDE
 		
-		4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Cloud9 IDE. This cloud workspace is accesible via a web browser.
+		4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Theia Cloud IDE. This cloud workspace is accesible via a web browser.
 		
 		4.2) User can set his git username and start working in the workspace.
 		
