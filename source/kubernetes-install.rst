@@ -138,7 +138,7 @@ Installation
 	
 	
 	
-	Provide values.yaml to tha Build-at-Scale Helm YAML chart.
+	Provide values.yaml to Build-at-Scale Helm YAML chart.
 
    
     
