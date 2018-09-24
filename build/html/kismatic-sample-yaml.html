@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Sample Helm Chart Parameters" href="helm-chart-values.html" />
-    <link rel="prev" title="Installing Kubernetes using Kismatic Tool" href="kubernetes-install.html" /> 
+    <link rel="next" title="Sample helm chart parameters" href="helm-chart-values.html" />
+    <link rel="prev" title="Installing kubernetes using kismatic." href="kubernetes-install.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -81,12 +81,13 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Pre-Requisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing Kubernetes using Kismatic Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing kubernetes using kismatic.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html#installing-build-at-scale">Installing Build-at-Scale</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sample Kismatic YAML file!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample Helm Chart Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample helm chart parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support for Build-at-Scale:</a></li>
 </ul>
 
             
@@ -360,7 +361,7 @@
   <span class="c1"># left blank.</span>
   <span class="n">nodes</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">host</span><span class="p">:</span> <span class="s2">&quot;app-linux2.lab.com&quot;</span>
-        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.192.39.29&quot;</span>
+        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.10.10.10&quot;</span>
         <span class="n">internalip</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
 
 <span class="c1"># Master nodes are the ones that run the Kubernetes control plane components.</span>
@@ -373,10 +374,10 @@
 
   <span class="c1"># If you have set up load balancing for master nodes, enter the short name here.</span>
   <span class="c1"># Otherwise, use the IP address of a single master node.</span>
-  <span class="n">load_balanced_short_name</span><span class="p">:</span> <span class="s2">&quot;10.192.39.29&quot;</span>
+  <span class="n">load_balanced_short_name</span><span class="p">:</span> <span class="s2">&quot;10.10.10.11&quot;</span>
   <span class="n">nodes</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">host</span><span class="p">:</span> <span class="s2">&quot;app-linux2.lab.com&quot;</span>
-        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.192.39.29&quot;</span>
+        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.10.10.12&quot;</span>
         <span class="n">internalip</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         <span class="n">labels</span><span class="p">:</span> <span class="p">{}</span>
 
@@ -385,12 +386,12 @@
   <span class="n">expected_count</span><span class="p">:</span> <span class="mi">2</span>
   <span class="n">nodes</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">host</span><span class="p">:</span> <span class="s2">&quot;app-linux1.lab.com&quot;</span>
-        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.192.39.27&quot;</span>
+        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.10.10.11&quot;</span>
         <span class="n">internalip</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         <span class="n">labels</span><span class="p">:</span> <span class="p">{}</span>
 
   <span class="o">-</span> <span class="n">host</span><span class="p">:</span> <span class="s2">&quot;app-linux3.lab.com&quot;</span>
-        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.192.39.30&quot;</span>
+        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.10.10.13&quot;</span>
         <span class="n">internalip</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         <span class="n">labels</span><span class="p">:</span> <span class="p">{}</span>
 
@@ -399,7 +400,7 @@
   <span class="n">expected_count</span><span class="p">:</span> <span class="mi">1</span>
   <span class="n">nodes</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">host</span><span class="p">:</span> <span class="s2">&quot;app-linux2.lab.com&quot;</span>
-        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.192.39.29&quot;</span>
+        <span class="n">ip</span><span class="p">:</span> <span class="s2">&quot;10.10.10.12&quot;</span>
         <span class="n">internalip</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         <span class="n">labels</span><span class="p">:</span> <span class="p">{}</span>
 
@@ -425,10 +426,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="helm-chart-values.html" class="btn btn-neutral float-right" title="Sample Helm Chart Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="helm-chart-values.html" class="btn btn-neutral float-right" title="Sample helm chart parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="kubernetes-install.html" class="btn btn-neutral" title="Installing Kubernetes using Kismatic Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="kubernetes-install.html" class="btn btn-neutral" title="Installing kubernetes using kismatic." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

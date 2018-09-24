@@ -2,10 +2,6 @@
    :maxdepth: 2
    :caption: Contents:
    
-   
-   
-
-
 .. uninstall:
    
 Uninstalling Build-At-Scale
@@ -24,7 +20,7 @@ Uninstalling Build-At-Scale
 
 .. uninstall_kismatic:
    
-Uninstalling Kismatic cluster
+Uninstalling kismatic cluster
 =================================================
 
 	* Kubernetes cluster installed via kismatic can be uninstalled easily using a single kismatic command.

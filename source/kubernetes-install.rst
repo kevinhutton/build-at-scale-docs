@@ -2,9 +2,9 @@
 
 .. _installing_kubernetes:
    
-Installing Kubernetes using Kismatic Tool
+Installing kubernetes using kismatic
 ================================================================
-	.. note :: We recommend using Kismatic to install Kubernetes, although users are free to install kubernetes cluster using their own preffered method as well.
+	.. note :: We recommend using kismatic to install kubernetes, although users are free to install kubernetes cluster using their own prefered method as well.
 	
 Pre-Requisites 
 --------------------------------------	
@@ -68,12 +68,12 @@ Installation
 	
 		> swapoff -a
 	
-	7. Install Kismatic as per `following documentation	 <https://github.com/apprenda/kismatic>`_.
+	7. Install kismatic as per `following documentation	 <https://github.com/apprenda/kismatic>`_.
 	
 		A sample installation yaml file is described `here <https://build-at-scale.readthedocs.io/en/latest/kismatic-sample-yaml.html>`_.
 	
 	
-	8. Download and Install Helm Package Manager
+	8. Download and install helm package manager
 	
 		8.1 Download the lastest stable version of `helm <https://github.com/kubernetes/helm/releases>`_.
 		
@@ -103,59 +103,44 @@ Installation
 	
 			git clone ssh://git@ngage.netapp.com:7999/dcs-bb/na-build-at-scale.git
 			
-	2. Specify Helm Configuration for build-at-scale installation. This yaml file consists of your storage details.
+	2. Specify helm configuration for build-at-scale installation. This yaml file consists of your storage details.
 	
 	.. code-block:: shell 
 	
 		>cat values.yaml
  
-		global:
-		 
+		global:		 
 		  scm:
-		 
 			type: "gitlab"
-		 
 		  registry:
-		 
 			type: "docker"
-		 
 		  ontap:
-		 
 			automaticVolumeCreation: true
-		 
 			dataIP: <ontap_data_lif_ip>
-		 
 			apiIP: <ontap_nslm_ip>
-		 
 			user: <ontap admin username>
-		 
 			password: <ontap admin password>
-		 
 			svm: <svm>
-		 
-			aggregate: <aggegate>
+			aggregate: <aggregate>
 	
 	
-	
-	
-	Provide values.yaml to tha Build-at-Scale Helm YAML chart.
+	Provide values.yaml to Build-at-Scale Helm YAML chart.
 
    
-    
     =======================       ======       ===============================================================================================
     Parameter 	                  Value        Description
     =======================       ======       ===============================================================================================
     automaticVolumeCreation       true         This option allows you to automatically create volumes required for build-at-scale installation 
-    dataIP                                     IP address of Data LIF on your ONTAP cluster
+    dataIP                                     IP address of data LIF on your ONTAP cluster
     apiIP                                      Enter IP-Adress:Port for your NSLM install
     user                                       Enter username for NSLM instance
     password                                   Enter password for NSLM instance
-    svm                                        Enter SVM name
-    aggregate                                  Enter the Aggregate name to create your volumes
+    svm                                        Enter vserver name
+    aggregate                                  Enter the aggregate name to create your volumes
     =======================       ======       ===============================================================================================
    
 	
-	3. Initialize Helm  with tiller Service account 
+	3. Initialize helm  with tiller service account 
 	
 	.. code-block:: shell
 	
@@ -164,7 +149,7 @@ Installation
 		
 	
 	
-	4. Install Helm Chart using following command :
+	4. Install helm chart using following command :
 	
 	.. code-block:: shell 
 	
@@ -221,15 +206,15 @@ Installation
 Configuring Build-at-Scale
 --------------------------------------
 
-	1. **Setting up CouchDB:**
+	1. **Setting up couchDB:**
 	
 		
-		Build-at-Scale uses CouchDB in backend to store all the build data and information. 
-		To configure CouchDB just visit the following URL: 
+		Build-at-Scale uses couchDB in backend to store all the build data and information. 
+		To configure couchDB just visit the following URL: 
 		
 		.. code :: shell 
 		
-			http://<<Kubernetes-IP>>:<<CouchDBPort/backend/admin/setup
+			http://<<Kubernetes-IP>>:<<webservicePort/backend/admin/setup
 		
 		.. figure:: images/couchdbconf.PNG
 			:width: 100%
@@ -237,18 +222,18 @@ Configuring Build-at-Scale
 			
 		.. note:: 
 		
-				Build-at-Scale automatically configrues the iniital CouchDB tables just by visiting the above link.
+				Build-at-Scale automatically configrues the initial couchDB tables just by visiting the above link.
 				
 				
 	2. **Configure GitLab:**
 	
 	
-		Build-at-Scale packages Gitlab as a SCM in its helm chart. An initial account has to be created on GitLab before starting to use it.
-		To create an account on GitLab, visit the following URL and sign up.
+		Build-at-Scale packages Gitlab as a SCM in its helm chart. An initial account has to be created on Gitlab before starting to use it.
+		To create an account on Gitlab, visit the following URL and sign up.
 		
 		.. code :: shell 
 		
-			http://<<Kubernetes-IP>>:<<GitLabPort>>
+			http://<<Kubernetes-IP>>:<<Gitlab_port>>
 		
 		
 		.. figure:: images/gitlab1.PNG
@@ -259,28 +244,25 @@ Configuring Build-at-Scale
 	3. **Creating a CI Pipeline from Build-at-Scale:**
 	
 	
-		Buiid-at-Scale allows you to setup a Jenkins-CI pipeline from the Build-at-Scale UI itself. CI Pipeline can be created from following location-
+		Buiid-at-Scale allows you to setup a Jenkins-CI pipeline from the Build-at-Scale user interface itself. CI Pipeline can be created from following location-
 
 		.. code :: shell 
 		
-			http://<<kubernetes-url>>:<<webservicePort>>/frontend/project/create
+			http://<<kubernetes-url>>:<<webservice_port>>/frontend/project/create
 		
 	
     =======================       =======      ================================================================================================
     Parameter 	                  Value        Description
     =======================       =======      ================================================================================================
-    SCM URL                                    Enter URL of your git project from GitLab                                                     
-    SCM Branch                    master       Enter code branch for the CI process         
-    Export Policy                 default      Export policy on storage for the volume created for this CI Build
+    SCM URL                                    Enter URL of your git project from Gitlab                                                     
+    SCM branch                    master       Enter code branch for the CI process         
+    Export policy                 default      Export policy on storage for the volume created for this CI Build
     =======================       =======      ================================================================================================
 	
 		.. figure:: images/create_pipeline.PNG
 			:width: 100%
 			:alt: Create CI Pipeline
 	
-	
-	
-				   
 		
 	4. **Create user workspaces from Build-at-Scale UI:**
 		
@@ -291,9 +273,9 @@ Configuring Build-at-Scale
     =======================       =======      ================================================================================================
     Parameter 	                  Value        Description
     =======================       =======      ================================================================================================
-    Git Project                                Select project to create a workspace                                                          
+    Git project                                Select project to create a workspace                                                          
     Username                                   Enter developer username                     
-    Workspace Prefix                           Enter a prefix to identify workspaces                               
+    Workspace prefix                           Enter a prefix to identify workspaces                               
 	Build                                      Select a successful build to create a workspace
     =======================       =======      ================================================================================================
 	
@@ -302,7 +284,7 @@ Configuring Build-at-Scale
 			:width: 100%
 			:alt: TheiaIDE
 		
-		4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Cloud9 IDE. This cloud workspace is accesible via a web browser.
+		4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Theia cloud IDE. This cloud workspace is accesible via a web browser.
 		
 		4.2) User can set his git username and start working in the workspace.
 		
@@ -314,7 +296,7 @@ Configuring Build-at-Scale
 		
 	5. **Creating WSMerge from Build-at-Scale UI:**
 		
-		Build-at-Scale alows users to merge their workspaces. This allows users to pull in the latest code without losing their own changes. Merging workspaces will also saves up on build times. To merge workspaces, navigate to the Merge Workspace tab and fill in the following values :-
+		Build-at-Scale alows users to merge their workspaces. This allows users to pull in the latest code without losing their own changes. Merging workspaces will also save up on build times. To merge workspaces, navigate to the Merge Workspace tab and fill in the following values :-
 
     =======================       =======      ================================================================================================
     Parameter 	                  Value        Description

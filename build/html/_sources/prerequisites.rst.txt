@@ -2,10 +2,6 @@
    :maxdepth: 3
    :caption: Contents:
    
-   
-   
-
-
 .. prerequisites:
    
 Pre-Requisites
@@ -17,11 +13,11 @@ Pre-Requisites
 	
 
 .. note:: * All validation in this solution has been done with RHEL 7.3, the source files can run on any flavour of Linux.
-		  * Any number of nodes can be added in the kubernetes cluster, for demo purposes 2 node cluster considered in this validation.
+		  * Any number of nodes can be added in the kubernetes cluster, for demo purposes a 3 node cluster is considered in this validation.
 		  * Keep the following storage details handy:
 				#. Data LIF IP:                        ________________________
-				#. Storage Virtual Machine(SVM) name:  ________________________
-				#. NSLM Server IP:                     ________________________
-				#. NSLM Username:                      ________________________
-				#. NSLM Password:                      ________________________
-				#. Aggregate Name:                     ________________________   
+				#. Storage virtual machine(SVM) name:  ________________________
+				#. NSLM server IP:                     ________________________
+				#. NSLM username:                      ________________________
+				#. NSLM password:                      ________________________
+				#. Aggregate name:                     ________________________

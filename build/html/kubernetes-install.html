@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installing Kubernetes using Kismatic Tool &mdash; Build-At-Scale 1.0 documentation</title>
+  <title>Installing kubernetes using kismatic. &mdash; Build-At-Scale 1.0 documentation</title>
   
 
   
@@ -81,7 +81,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Pre-Requisites</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing Kubernetes using Kismatic Tool</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing kubernetes using kismatic.</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-Requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 </ul>
@@ -92,9 +92,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kismatic-sample-yaml.html">Sample Kismatic YAML file!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample Helm Chart Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample helm chart parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support for Build-at-Scale:</a></li>
 </ul>
 
             
@@ -140,7 +141,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Installing Kubernetes using Kismatic Tool</li>
+      <li>Installing kubernetes using kismatic.</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -159,12 +160,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installing-kubernetes-using-kismatic-tool">
-<span id="installing-kubernetes"></span><h1>Installing Kubernetes using Kismatic Tool<a class="headerlink" href="#installing-kubernetes-using-kismatic-tool" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="installing-kubernetes-using-kismatic">
+<span id="installing-kubernetes"></span><h1>Installing kubernetes using kismatic.<a class="headerlink" href="#installing-kubernetes-using-kismatic" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">We recommend using Kismatic to install Kubernetes, although users are free to install kubernetes cluster using their own preffered method as well.</p>
+<p class="last">We recommend using kismatic to install kubernetes, although users are free to install kubernetes cluster using their own prefered method as well.</p>
 </div>
 </div></blockquote>
 <div class="section" id="pre-requisites">
@@ -224,12 +225,12 @@
 </pre></div>
 </div>
 <ol class="arabic" start="7">
-<li><p class="first">Install Kismatic as per <a class="reference external" href="https://github.com/apprenda/kismatic">following documentation</a>.</p>
+<li><p class="first">Install kismatic as per <a class="reference external" href="https://github.com/apprenda/kismatic">following documentation</a>.</p>
 <blockquote>
 <div><p>A sample installation yaml file is described <a class="reference external" href="https://build-at-scale.readthedocs.io/en/latest/kismatic-sample-yaml.html">here</a>.</p>
 </div></blockquote>
 </li>
-<li><p class="first">Download and Install Helm Package Manager</p>
+<li><p class="first">Download and install helm package manager</p>
 <blockquote>
 <div><p>8.1 Download the lastest stable version of <a class="reference external" href="https://github.com/kubernetes/helm/releases">helm</a>.</p>
 <p>8.2 Unpack it</p>
@@ -259,38 +260,26 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Specify Helm Configuration for build-at-scale installation. This yaml file consists of your storage details.</li>
+<li>Specify helm configuration for build-at-scale installation. This yaml file consists of your storage details.</li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;cat values.yaml
 
 global:
-
   scm:
-
         type: <span class="s2">&quot;gitlab&quot;</span>
-
   registry:
-
         type: <span class="s2">&quot;docker&quot;</span>
-
   ontap:
-
         automaticVolumeCreation: <span class="nb">true</span>
-
         dataIP: &lt;ontap_data_lif_ip&gt;
-
         apiIP: &lt;ontap_nslm_ip&gt;
-
         user: &lt;ontap admin username&gt;
-
         password: &lt;ontap admin password&gt;
-
         svm: &lt;svm&gt;
-
-        aggregate: &lt;aggegate&gt;
+        aggregate: &lt;aggregate&gt;
 </pre></div>
 </div>
-<p>Provide values.yaml to tha Build-at-Scale Helm YAML chart.</p>
+<p>Provide values.yaml to Build-at-Scale Helm YAML chart.</p>
 </div></blockquote>
 <table border="1" class="docutils">
 <colgroup>
@@ -311,7 +300,7 @@ global:
 </tr>
 <tr class="row-odd"><td>dataIP</td>
 <td>&#160;</td>
-<td>IP address of Data LIF on your ONTAP cluster</td>
+<td>IP address of data LIF on your ONTAP cluster</td>
 </tr>
 <tr class="row-even"><td>apiIP</td>
 <td>&#160;</td>
@@ -327,23 +316,23 @@ global:
 </tr>
 <tr class="row-odd"><td>svm</td>
 <td>&#160;</td>
-<td>Enter SVM name</td>
+<td>Enter vserver name</td>
 </tr>
 <tr class="row-even"><td>aggregate</td>
 <td>&#160;</td>
-<td>Enter the Aggregate name to create your volumes</td>
+<td>Enter the aggregate name to create your volumes</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <div><ol class="arabic simple" start="3">
-<li>Initialize Helm  with tiller Service account</li>
+<li>Initialize helm  with tiller service account</li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;helm init --service-account tiller --upgrade
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Install Helm Chart using following command :</li>
+<li>Install helm chart using following command :</li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;helm install --name build-at-scale .
 </pre></div>
@@ -402,11 +391,11 @@ build-at-scale-webservice                  NodePort    <span class="m">10</span>
 <blockquote>
 <div><blockquote>
 <div><ol class="arabic">
-<li><p class="first"><strong>Setting up CouchDB:</strong></p>
+<li><p class="first"><strong>Setting up couchDB:</strong></p>
 <blockquote>
-<div><p>Build-at-Scale uses CouchDB in backend to store all the build data and information.
-To configure CouchDB just visit the following URL:</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;&lt;</span><span class="n">Kubernetes</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;&gt;</span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">CouchDBPort</span><span class="o">/</span><span class="n">backend</span><span class="o">/</span><span class="n">admin</span><span class="o">/</span><span class="n">setup</span>
+<div><p>Build-at-Scale uses couchDB in backend to store all the build data and information.
+To configure couchDB just visit the following URL:</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;&lt;</span><span class="n">Kubernetes</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;&gt;</span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">webservicePort</span><span class="o">/</span><span class="n">backend</span><span class="o">/</span><span class="n">admin</span><span class="o">/</span><span class="n">setup</span>
 </pre></div>
 </div>
 <div class="figure">
@@ -414,15 +403,15 @@ To configure CouchDB just visit the following URL:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Build-at-Scale automatically configrues the iniital CouchDB tables just by visiting the above link.</p>
+<p class="last">Build-at-Scale automatically configrues the initial couchDB tables just by visiting the above link.</p>
 </div>
 </div></blockquote>
 </li>
 <li><p class="first"><strong>Configure GitLab:</strong></p>
 <blockquote>
-<div><p>Build-at-Scale packages Gitlab as a SCM in its helm chart. An initial account has to be created on GitLab before starting to use it.
-To create an account on GitLab, visit the following URL and sign up.</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;&lt;</span><span class="n">Kubernetes</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;&gt;</span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">GitLabPort</span><span class="o">&gt;&gt;</span>
+<div><p>Build-at-Scale packages Gitlab as a SCM in its helm chart. An initial account has to be created on Gitlab before starting to use it.
+To create an account on Gitlab, visit the following URL and sign up.</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;&lt;</span><span class="n">Kubernetes</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;&gt;</span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">Gitlab_port</span><span class="o">&gt;&gt;</span>
 </pre></div>
 </div>
 <div class="figure">
@@ -432,8 +421,8 @@ To create an account on GitLab, visit the following URL and sign up.</p>
 </li>
 <li><p class="first"><strong>Creating a CI Pipeline from Build-at-Scale:</strong></p>
 <blockquote>
-<div><p>Buiid-at-Scale allows you to setup a Jenkins-CI pipeline from the Build-at-Scale UI itself. CI Pipeline can be created from following location-</p>
-<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;&lt;</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">url</span><span class="o">&gt;&gt;</span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">webservicePort</span><span class="o">&gt;&gt;/</span><span class="n">frontend</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">create</span>
+<div><p>Buiid-at-Scale allows you to setup a Jenkins-CI pipeline from the Build-at-Scale user interface itself. CI Pipeline can be created from following location-</p>
+<div class="code shell highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//&lt;&lt;</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">url</span><span class="o">&gt;&gt;</span><span class="p">:</span><span class="o">&lt;&lt;</span><span class="n">webservice_port</span><span class="o">&gt;&gt;/</span><span class="n">frontend</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">create</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -455,13 +444,13 @@ To create an account on GitLab, visit the following URL and sign up.</p>
 <tbody valign="top">
 <tr class="row-even"><td>SCM URL</td>
 <td>&#160;</td>
-<td>Enter URL of your git project from GitLab</td>
+<td>Enter URL of your git project from Gitlab</td>
 </tr>
-<tr class="row-odd"><td>SCM Branch</td>
+<tr class="row-odd"><td>SCM branch</td>
 <td>master</td>
 <td>Enter code branch for the CI process</td>
 </tr>
-<tr class="row-even"><td>Export Policy</td>
+<tr class="row-even"><td>Export policy</td>
 <td>default</td>
 <td>Export policy on storage for the volume created for this CI Build</td>
 </tr>
@@ -494,7 +483,7 @@ To create an account on GitLab, visit the following URL and sign up.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Git Project</td>
+<tr class="row-even"><td>Git project</td>
 <td>&#160;</td>
 <td>Select project to create a workspace</td>
 </tr>
@@ -502,7 +491,7 @@ To create an account on GitLab, visit the following URL and sign up.</p>
 <td>&#160;</td>
 <td>Enter developer username</td>
 </tr>
-<tr class="row-even"><td>Workspace Prefix</td>
+<tr class="row-even"><td>Workspace prefix</td>
 <td>&#160;</td>
 <td>Enter a prefix to identify workspaces</td>
 </tr>
@@ -517,7 +506,7 @@ To create an account on GitLab, visit the following URL and sign up.</p>
 <div><div class="figure">
 <a class="reference internal image-reference" href="_images/create_workspace2.PNG"><img alt="TheiaIDE" src="_images/create_workspace2.PNG" style="width: 100%;" /></a>
 </div>
-<p>4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Cloud9 IDE. This cloud workspace is accesible via a web browser.</p>
+<p>4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Theia cloud IDE. This cloud workspace is accesible via a web browser.</p>
 <p>4.2) User can set his git username and start working in the workspace.</p>
 </div></blockquote>
 <div class="figure">
@@ -526,7 +515,7 @@ To create an account on GitLab, visit the following URL and sign up.</p>
 <ol class="arabic" start="5">
 <li><p class="first"><strong>Creating WSMerge from Build-at-Scale UI:</strong></p>
 <blockquote>
-<div><p>Build-at-Scale alows users to merge their workspaces. This allows users to pull in the latest code without losing their own changes. Merging workspaces will also saves up on build times. To merge workspaces, navigate to the Merge Workspace tab and fill in the following values :-</p>
+<div><p>Build-at-Scale alows users to merge their workspaces. This allows users to pull in the latest code without losing their own changes. Merging workspaces will also save up on build times. To merge workspaces, navigate to the Merge Workspace tab and fill in the following values :-</p>
 </div></blockquote>
 </li>
 </ol>

@@ -5,7 +5,7 @@
 
    _sample_pipeline
    
-Sample CI Pipeline by Build-At-Scale
+Sample CI pipeline for Build-At-Scale
 ==========================================
    
    .. code :: shell

@@ -80,12 +80,13 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Pre-Requisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing Kubernetes using Kismatic Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing kubernetes using kismatic.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html#installing-build-at-scale">Installing Build-at-Scale</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kismatic-sample-yaml.html">Sample Kismatic YAML file!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample Helm Chart Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample helm chart parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support for Build-at-Scale:</a></li>
 </ul>
 
             
@@ -152,42 +153,42 @@
             
   <div class="section" id="welcome-to-build-at-scale-s-documentation">
 <h1>Welcome to Build-At-Scale’s documentation<a class="headerlink" href="#welcome-to-build-at-scale-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Build-At-Scale is an end-to-end CI-CD framework from creating code repository to deploying builds. All these processes run as Kubernetes pods and use persistent NetApp storage with NetApp Service Level Manager.</p>
-<p>The advantage of running CI process on NetApp for Business or Asset owner are –</p>
+<p>Build-At-Scale is an end-to-end CI-CD framework from creating code repository to deploying builds. All these processes run as kubernetes pods and use persistent Netapp storage with NetApp Service Level Manager.</p>
+<p>The advantage of running CI process on NetApp for business or asset owner are –</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><strong>Improve Developer productivity</strong></li>
+<li><strong>Improve developer productivity</strong></li>
 </ol>
 </div></blockquote>
-<p>NetApp FlexClones allows to cut down the user workspace provisioning from hours and days to few seconds.
+<p>Netapp Flexclones allows to cut down the user workspace provisioning from hours and days to few seconds.
 Each user workspace is pre-packaged with the source code and the dependencies like libraries, tools, compilers and config files for developers start working quickly. There are no long wait times for developers to prepare their workspaces.</p>
 <blockquote>
 <div><ol class="arabic simple" start="2">
 <li><strong>Reduce build time</strong></li>
 </ol>
 </div></blockquote>
-<p>NetApp Snapshots and Flexclones for the CI data volumes allows developers to clone copies of the latest builds and merge the changes with their own incremental changes.
+<p>NetApp snapshots and flexclones for the CI data volumes allows developers to clone copies of the latest builds and merge the changes with their own incremental changes.
 Incremental builds allow developers to test and merge the changes quickly in their workspaces and provides consistency to the builds with reduced build times.</p>
 <blockquote>
 <div><ol class="arabic simple" start="3">
 <li><strong>Cloud-IDE integretion</strong></li>
 </ol>
 </div></blockquote>
-<p>With integretion with Cloud9, Build-At-Scale provisions workspaces which are attached to a cloud based IDE which ensure a stable build environment and the developers do not have to worry about any dependency changes.</p>
+<p>Along with integretion of Theia cloud IDE, Build-At-Scale provisions workspaces attached to a cloud based IDE which ensure a stable build environment and the developers do not have to worry about any dependency changes.</p>
 <blockquote>
 <div><ol class="arabic simple" start="4">
 <li><strong>Reduce infrastructure costs</strong></li>
 </ol>
 </div></blockquote>
-<p>NetApp data volumes also known as FlexVols, Snapshots and FlexClones are thin provisioned. This allows to provision more build workloads with less storage footprint and optimize compute and network resources for parallel builds. Thus providing an improved Return of Investment (ROI) by doing “more with less” in the entire build farm.
-Data Compaction and De-duplication for the source code repositories and the software builds during the CI process on NetApp provides a high degree of storage space efficiency. Data compression of build artifacts in the binary repository lso provides space savings.</p>
+<p>NetApp flexclones are thin provisioned. This allows to provision more build workloads with less storage footprint and optimize compute and network resources for parallel builds. Thus providing an improved return of investment(ROI) by doing “more with less” in the entire build farm.
+Data compaction and de-duplication for the source code repositories and the software builds during the CI process on NetApp provides a high degree of storage space efficiency. Data compression of build artifacts in the binary repository also provides space savings.</p>
 </div>
 <div class="section" id="contents">
 <h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Pre-Requisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing Kubernetes using Kismatic Tool</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes-install.html">Installing kubernetes using kismatic.</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="kubernetes-install.html#pre-requisites">Pre-Requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kubernetes-install.html#installation">Installation</a></li>
 </ul>
@@ -198,9 +199,10 @@ Data Compaction and De-duplication for the source code repositories and the soft
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kismatic-sample-yaml.html">Sample Kismatic YAML file!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample Helm Chart Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helm-chart-values.html">Sample helm chart parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uninstall.html">Uninstalling Build-At-Scale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling Kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uninstall.html#uninstalling-kismatic-cluster">Uninstalling kismatic cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support for Build-at-Scale:</a></li>
 </ul>
 </div>
 </div>

@@ -2,13 +2,9 @@
    :maxdepth: 2
    :caption: Contents:
    
-   
-   
-
-
 .. uninstall:
    
-Uninstalling Build-At-Scale
+Uninstalling Build-at-Scale
 =================================================
 
 	* Build-at-Scale can be uninstalled using a single helm command
@@ -24,7 +20,7 @@ Uninstalling Build-At-Scale
 
 .. uninstall_kismatic:
    
-Uninstalling Kismatic cluster
+Uninstalling kismatic cluster
 =================================================
 
 	* Kubernetes cluster installed via kismatic can be uninstalled easily using a single kismatic command.
