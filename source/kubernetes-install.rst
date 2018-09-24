@@ -124,11 +124,6 @@ Installation
 			aggregate: <aggregate>
 	
 	
-<<<<<<< HEAD
-=======
-	
-	
->>>>>>> 588c2dd56951e79c1c3e2a4ffe19274465c3c3d8
 	Provide values.yaml to Build-at-Scale Helm YAML chart.
 
    
@@ -289,11 +284,7 @@ Configuring Build-at-Scale
 			:width: 100%
 			:alt: TheiaIDE
 		
-<<<<<<< HEAD
 		4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Theia cloud IDE. This cloud workspace is accesible via a web browser.
-=======
-		4.1) Once a workspace is created, Build-at-Scale automatically attaches the workspace to a Theia Cloud IDE. This cloud workspace is accesible via a web browser.
->>>>>>> 588c2dd56951e79c1c3e2a4ffe19274465c3c3d8
 		
 		4.2) User can set his git username and start working in the workspace.
 		

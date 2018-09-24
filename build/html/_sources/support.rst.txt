@@ -1,0 +1,9 @@
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+   
+.. support:
+   
+Support for Build-at-Scale:
+=================================================
+Support for Build-at-Scale kubernetes deployment is provided via `Slack <https://netapp.io/slack>`_. in the #ci-cd channel on a best effort policy.
