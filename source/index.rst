@@ -22,7 +22,11 @@ Incremental builds allow developers to test and merge the changes quickly in the
 
 	3. **Cloud-IDE integretion**
 
+<<<<<<< HEAD
 Along with integretion of Theia cloud IDE, Build-At-Scale provisions workspaces attached to a cloud based IDE which ensure a stable build environment and the developers do not have to worry about any dependency changes.
+=======
+With integretion with Theia Cloud IDE, Build-At-Scale provisions workspaces which are attached to a cloud based IDE which ensure a stable build environment and the developers do not have to worry about any dependency changes.
+>>>>>>> 588c2dd56951e79c1c3e2a4ffe19274465c3c3d8
 	
 	
 	4. **Reduce infrastructure costs**
@@ -46,3 +50,7 @@ Contents
    
    
    
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 588c2dd56951e79c1c3e2a4ffe19274465c3c3d8
